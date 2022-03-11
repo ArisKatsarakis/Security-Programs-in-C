@@ -1,2 +1,2 @@
 # Reverse Engineering   
-A mal that has to be decompiled and Reversed .
+A malware that has to be analysed and Reversed .
