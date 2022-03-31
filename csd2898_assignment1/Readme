@@ -1,0 +1,12 @@
+Instructions for compiling:
+1) make debug
+
+2) run ./crypt  what ever word you want to encrypt and choose your cipher for it
+
+3) feistel cipher is not deployed
+
+4) one time pad encrypts correctly but can not decrypt
+
+5) the other ciphers work good enough
+
+
