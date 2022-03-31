@@ -41,7 +41,7 @@ char *rail_fence_encr(char plain[100], int rail)
     j = 0;
     for (k = 0; k < rail; k++)
     {
-        memset(fence[k], '_', strlen(plain) + 5);
+        memset(fence[k], '_', strlen(plain));
     }
     printf("%d \n", strlen(plain));
 
@@ -85,7 +85,7 @@ char *rail_fence_encr(char plain[100], int rail)
     // making the cipher
     for (i = 0; i < rail; i++)
     {
-        for (j = 0; j < strlen(plain) + 5; j++)
+        for (j = 0; j < strlen(plain); j++)
         {
             if (fence[i][j] != '_' && fence[i][j] != 0)
             {
@@ -197,8 +197,15 @@ char *beaufort_encr(char *plain, char *key)
     int i, j, k, l;
     char tabl[26][26];
     int alp = 65;
+    char* newkey = malloc(strlen(plain) * sizeof(char));
     char *cipher = malloc(strlen(plain) * sizeof(char));
 
+    j=0;
+    for(i = 0; i < strlen(plain); i++){
+            if(j >= strlen(key)) j=0;
+            newkey[i] = key[j];
+        j++;
+    }
     
     // make the tablau
 
@@ -226,7 +233,7 @@ char *beaufort_encr(char *plain, char *key)
         for (k = 0; k < 26; k++)
         {
             
-                if (tabl[k][j] == key[i])
+                if (tabl[k][j] == newkey[i])
                 {
                     cipher[i] = tabl[k][0];
                     break;
@@ -246,9 +253,16 @@ char *beaufort_decr(char *cipher, char *key)
     int i, j, k, l;
     char tabl[26][26];
     int alp = 65;
+    char* newkey = malloc(strlen(cipher) * sizeof(char));
     char *plain = malloc(strlen(cipher) * sizeof(char));
 
-    
+    // make the new key
+    j=0;
+    for(i = 0; i < strlen(cipher); i++){
+            if(j >= strlen(key)) j=0;
+            newkey[i] = key[j];
+        j++;
+    }
     // make the tablau
 
     for (i = 0; i < 26; i++)
@@ -275,7 +289,7 @@ char *beaufort_decr(char *cipher, char *key)
         for (k = 0; k < 26; k++)
         {
             
-                if (tabl[k][j] == key[i])
+                if (tabl[k][j] == newkey[i])
                 {
                     plain[i] = tabl[k][0];
                     break;
@@ -292,8 +306,8 @@ char *beaufort_decr(char *cipher, char *key)
 }
 char* affine_encr(char* plain){
     char* cipher = malloc(strlen(plain) * sizeof(char));
-    int a = 5; 
-    int b = 8;
+    int a = 11; 
+    int b = 19;
     int m = 26;
     int key;
     for(int i = 0; i < strlen(plain); i++){
@@ -305,15 +319,18 @@ char* affine_encr(char* plain){
 
 char* affine_decr(char* cipher){
     char* plain = malloc(strlen(cipher) * sizeof(char));
-    int a = 5; 
-    int b = 8;
+    int a = 11; 
+    int b = 19;
     int m = 26;
     int key;
     int mod; 
     
-    for (int x=1; x<m; x++) 
-       if ((a*x) % m == 1) 
+    for (int x=1; x<m; x++) {
+       if ((a*x) % m == 1) {
             a = x;
+            break;
+       }
+    }
     for(int i = 0; i < strlen(cipher); i++){
         key = (int)cipher[i] - 65;
         plain[i] = 65 + ((a)* ((key - b)% m));
