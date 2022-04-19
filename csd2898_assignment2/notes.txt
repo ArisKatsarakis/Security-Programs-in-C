@@ -1,0 +1,18 @@
+ASSIGNMENT 2 HY457 EXPLOITS
+--AUTHOR: katsarakis Zaxarias
+2.1 
+-- Bash Scripting
+--- Injection in .bashrc
+    
+-- my_ssh.sh <destination> 
+-- monitoring with strace 
+-- Filter and parse monitored syscals and find which contains the pass
+-- Store Password
+-- Scripting Basics
+Strace results of ssh are:
+--Comand         
+    in .bashrc alias test
+strace -o trace.txt ssh milo.csd.uoc.gr
+--Data in trace.txt
+ssh syscals
+execve /bin/ssh
