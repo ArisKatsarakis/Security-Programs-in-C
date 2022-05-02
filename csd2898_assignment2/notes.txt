@@ -25,3 +25,11 @@ or not in the terminal procces
 -- if we open ssh with read and print the data in a text 
 strace -f -e read -o read.txt ssh destination 
 we get everything that the ssh commands reads 
+2.2
+- pcap_loop() returns the packet that is the first poitnter to the header
+we need to define a hader through struct sniff_ip 
+Useful Resources: 
+tcp-dump 
+https://stackoverflow.com/questions/12999538/read-from-a-pcap-file-and-print-out-ip-addresses-and-port-numbers-in-c-but-my-r
+http://www.rhyous.com/2011/11/13/how-to-read-a-pcap-file-from-wireshark-with-c/
+https://www.tcpdump.org/pcap.html
