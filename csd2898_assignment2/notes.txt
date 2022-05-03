@@ -33,4 +33,19 @@ tcp-dump
 https://stackoverflow.com/questions/12999538/read-from-a-pcap-file-and-print-out-ip-addresses-and-port-numbers-in-c-but-my-r
 http://www.rhyous.com/2011/11/13/how-to-read-a-pcap-file-from-wireshark-with-c/
 https://www.tcpdump.org/pcap.html
-#Parsing the headers completed by creating structs of all the fields of the Ethernet,Tcp,ip header of the packet
+#Parsing the headers completed by creating structs of all the fields of the Ethernet,Tcp,ip header of the packet\
+
+2.3 
+./secret_sharing split 72
+argv[1] = "split"
+argv[2] = 72 -done
+
+Construct a polynomial f(x) = a*x^2 + b*x + c
+C is the secret Sumber Scripting
+
+Alice: (1, f(1))
+Bob: (2, f(2))
+Carol: (3, f(2))
+
+polynomial_degree = entities -1 ;
+#include <math.h> ---> for geting pow() for power annotation
