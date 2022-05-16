@@ -1,11 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <pcap.h>
-#include <netinet/in.h>
-#include <netinet/if_ether.h>
-#include <net/ethernet.h>
+
 #include "ids.h"
 rul rules_list[100];
 int rul_count = 0;
@@ -53,6 +46,7 @@ void my_packet_handler(u_char *args,
     u_int size_tcp;
     int i = 0;
     FILE *fp = fopen("alerts.txt","a");
+        
     //printf("Header: length: %d \n",header->caplen);
     //printf("Total-Length: %u \n",header->len);
     eth_header = (struct ether_header *) packet;
@@ -61,8 +55,8 @@ void my_packet_handler(u_char *args,
     size_ip = IP_HL(ip)*4;
     tcp = (struct sniff_tcp*)(packet+14+size_ip);
     size_tcp = TH_OFF(tcp)*4;
-    //printf("Source: %s Port: %d \n",inet_ntoa(ip->ip_src), ntohs(tcp->th_sport));
-    //printf(" Destination: %s Port: %d \n", inet_ntoa(ip->ip_dst),ntohs(tcp->th_dport) );
+    printf("Source: %s Port: %d \n",inet_ntoa(ip->ip_src), ntohs(tcp->th_sport));
+    printf(" Destination: %s Port: %d \n", inet_ntoa(ip->ip_dst),ntohs(tcp->th_dport) );
     for ( i = 0; i < rul_count; i++)
     {
         if (!strcmp(rules_list[i].source_ip,inet_ntoa(ip->ip_src)))

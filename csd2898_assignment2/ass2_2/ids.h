@@ -1,4 +1,13 @@
-#define ETHER_ADDR_LEN 6
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+#include <pcap.h>
+#include <netinet/in.h>
+#include <netinet/if_ether.h>
+#include <net/ethernet.h>
+#include <netinet/ip.h>
+
 struct sniff_ethernet {
 	u_char ether_dhost[ETHER_ADDR_LEN]; /* Destination host address */
 	u_char ether_shost[ETHER_ADDR_LEN]; /* Source host address */

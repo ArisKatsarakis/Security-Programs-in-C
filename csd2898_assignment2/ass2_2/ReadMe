@@ -12,7 +12,7 @@ Files Used:
     1) ids.c
     2) ids.h
     3)rules.txt
-    4) pcap example files(like smallFlows,pcap)
+    4) pcap example files
     5) alerts.txt (for the outcome)
 Instructions: 
     1)make exec 
