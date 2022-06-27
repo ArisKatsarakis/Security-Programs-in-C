@@ -1,4 +1,4 @@
-# Intrusion Detection System
+## Intrusion Detection System
 Our IDS actually reads rules.txt and saves them in struct rul(definition in ids.h).
 After we initialized the rules in the struct 
 we analyze the pcap file using pcap_loop and the my_packet_handler.
