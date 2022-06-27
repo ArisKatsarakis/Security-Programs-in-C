@@ -1,4 +1,4 @@
-#include "cs457_crypto.h"
+#include "encryption.h"
 
 int main(int argc, char* argv[])
 {
