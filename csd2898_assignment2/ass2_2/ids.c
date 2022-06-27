@@ -6,7 +6,7 @@ void my_packet_handler(u_char *args, const struct pcap_pkthdr *header,const u_ch
 int main(){
     // file opened
     char error_buffer[PCAP_ERRBUF_SIZE];
-    pcap_t *handle = pcap_open_offline("smallFlows.pcap",error_buffer);
+    pcap_t *handle = pcap_open_offline("test.pcap",error_buffer);
     FILE *rules; 
     char *buffer;
     int i =1;
