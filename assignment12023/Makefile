@@ -1,2 +1,2 @@
 onetimepad:
-	gcc cs457_crypto.c  -o encryptor
+	gcc cs457_crypto.c -g  -o encryptor

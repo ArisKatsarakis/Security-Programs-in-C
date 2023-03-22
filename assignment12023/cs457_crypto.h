@@ -7,4 +7,5 @@
 
 void printHelloWorld(void);
 
-char*  one_time_pad_encr(char *plaintext, int plainSize );
+
+const char*  one_time_pad_encr(char *plaintext, int plainSize );
