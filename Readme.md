@@ -10,4 +10,3 @@
 		more details in the folder
 
 	Secret Sharing
-		Secret sharing through polynomial reconstruction 
