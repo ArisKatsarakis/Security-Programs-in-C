@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <string.h>
 
 #ifdef cs457_crypto_c
 #define EXTERN
@@ -17,5 +18,7 @@ Obe time pad Encryption uses a plaintext and its size as a number in order to cr
 
 const char*  one_time_pad_encr(char *plaintext, int plainSize, char **secretKey);
 const char*  one_time_pad_decr(char *ciphertext, int plainSize, char **secretKey);
-const char*  one_time_pad_encr2(char *ciphertext, int plainSize, char **secretKey);
-const char*  one_time_pad_dencr2(char *ciphertext, int plainSize, char **secretKey);
+const char*  one_time_pad_encr_five(char *ciphertext, int plainSize, char **secretKey);
+const char*  one_time_pad_dencr_five(char *ciphertext, int plainSize, char **secretKey);
+const char* substitution_encr(char *plaintext, char *cipherAlphabet);
+const char* substitution_decr(char *cipherText, char *cipherAlphabet);

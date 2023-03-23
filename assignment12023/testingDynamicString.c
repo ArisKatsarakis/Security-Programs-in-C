@@ -1,13 +1,15 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+
 
 int main()  {
-	char *myString = "myString"; 
- 	int size = 3 * sizeof(myString);
 	int i = 0;
-	printf("Size of string x 3 = %d \n", size);
-	char* newArray = malloc(size * sizeof(char));
-	for(i =0; i < size; i++) {
+	int plainSize = 15;
 	
+	for(i =0; i< plainSize ; i++) {
+	
+		printf("%d - ",i%5);
 	}
+	printf("\n");
 }

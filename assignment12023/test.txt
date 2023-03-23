@@ -1,0 +1,2 @@
+plaintext Alphabet = 'abcdefghijklmnopqrstuvwxyz'
+Cipher Alphabet = 'phqgiumeaylnofdxjkrcvstzwb'
