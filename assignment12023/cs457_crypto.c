@@ -2,21 +2,22 @@
 #include "cs457_crypto.h"
 void createRandomData() {
             int i;
-            unsigned int buffer[8];
+            char buffer[8];
             int fd = open("/dev/urandom", O_RDONLY);
             read(fd, buffer, 8);
             //buffer now contains the random data
             close(fd);
             for(i = 0; i < 1; ++i)
-                    printf("%02X", buffer[i]);
+                    printf("%c", buffer[i]);
             printf("\n");
             printf("%d \n",buffer[0]);
 }
 int main ( ) {
     printHelloWorld();
     const char* encryption = one_time_pad_encr("Testing", sizeof("Testing"), &encryptionKey);
-    const char* decryption = one_time_pad_denr(&encryption, sizeof("Testing"),&encryptionKey);
+    const char* decryption = one_time_pad_denr(encryption, sizeof("Testing"),&encryptionKey);
     printf("%s \n",encryption );
+    createRandomData();
     printf("%s \n",decryption );
     return 0;
     
