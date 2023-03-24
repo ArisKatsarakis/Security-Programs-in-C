@@ -3,6 +3,10 @@
 
 int main ( ) {
     printf("Encryption One Time Pad 1 \n");
+    char* substitutionPlaintext = malloc(100*sizeof(char));
+    char* substitutionCiphertext = malloc(100*sizeof(char));
+    char*   cipherAlphabet  = malloc(100*sizeof(char));
+    const char* substitutionEncryption, substitutionDecryption;
     const char* encryption = one_time_pad_encr("Testing", sizeof("Testing"), &encryptionKey);
     const char* decryption = one_time_pad_decr(encryption, sizeof("Testing"),&encryptionKey);
     const char* encryption2 = one_time_pad_encr_five("Testing", sizeof("Testing"), &encryptionKey);
@@ -12,6 +16,14 @@ int main ( ) {
     printf("Encryption of a 5 charachter one time pad \n");
     printf("%s \n",encryption2 );
     printf("%s \n",decryption2 );
+    printf("Substitution Encryption ! \n");
+    scanf("%[^\n]%*c", substitutionPlaintext);
+    printf("Substitution Encryption plaintext: %s \n", substitutionPlaintext);
+    printf("Please provide the according cipher alphabet in order from a-z \n");
+    scanf("%[^\n]%*c", cipherAlphabet);
+    printf("Alphebet provided is %s \n", cipherAlphabet);
+
+    substitutionEncryption = substitution_encr(substitutionPlaintext, cipherAlphabet);
     return 0;
     
 }
@@ -78,4 +90,12 @@ const char*  one_time_pad_dencr_five(char *ciphertext, int plainSize, char** sec
     for(i =0; i < plainSize; i++)
            plaintext[i] = (char) (ciphertext[i])  ^ (*(*secretKey +(i%5)));
     return plaintext;
+}
+
+const char* substitution_encr(char *plaintext, char *cipherAlphabet) {
+
+}
+
+const char* substitution_decr(char *cipherText, char *cipherAlphabet) {
+
 }
