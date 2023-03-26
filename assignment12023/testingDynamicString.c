@@ -4,12 +4,9 @@
 
 
 int main()  {
-	int i = 0;
-	int plainSize = 15;
-	
-	for(i =0; i< plainSize ; i++) {
-	
-		printf("%d - ",i%5);
-	}
-	printf("\n");
+	char* theString = "This";
+	char* placeInString = strchr(theString,'T');
+	printf("The place of the char is %d \n",(int){placeInString - theString});
+	return 0;
+
 }

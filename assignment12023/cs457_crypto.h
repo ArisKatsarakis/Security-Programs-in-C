@@ -22,3 +22,4 @@ const char*  one_time_pad_encr_five(char *ciphertext, int plainSize, char **secr
 const char*  one_time_pad_dencr_five(char *ciphertext, int plainSize, char **secretKey);
 const char* substitution_encr(char *plaintext, char *cipherAlphabet);
 const char* substitution_decr(char *cipherText, char *cipherAlphabet);
+const char* substitution_algo_decr(char *ciphertext);

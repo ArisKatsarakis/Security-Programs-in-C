@@ -1,2 +1,5 @@
 plaintext Alphabet = 'abcdefghijklmnopqrstuvwxyz'
 Cipher Alphabet = 'phqgiumeaylnofdxjkrcvstzwb'
+
+Test plaintext = 'defend the east wall of the castle'
+Should be Outcome = 'giuifg cei iprc tpnn du cei qprcni'

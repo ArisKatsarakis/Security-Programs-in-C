@@ -6,7 +6,8 @@ int main ( ) {
     char* substitutionPlaintext = malloc(100*sizeof(char));
     char* substitutionCiphertext = malloc(100*sizeof(char));
     char*   cipherAlphabet  = malloc(100*sizeof(char));
-    const char* substitutionEncryption, substitutionDecryption;
+    const char* substitutionEncryption;
+    const char* substitutionDecryption;
     const char* encryption = one_time_pad_encr("Testing", sizeof("Testing"), &encryptionKey);
     const char* decryption = one_time_pad_decr(encryption, sizeof("Testing"),&encryptionKey);
     const char* encryption2 = one_time_pad_encr_five("Testing", sizeof("Testing"), &encryptionKey);
@@ -22,8 +23,11 @@ int main ( ) {
     printf("Please provide the according cipher alphabet in order from a-z \n");
     scanf("%[^\n]%*c", cipherAlphabet);
     printf("Alphebet provided is %s \n", cipherAlphabet);
-
     substitutionEncryption = substitution_encr(substitutionPlaintext, cipherAlphabet);
+    printf("THe ciphertext is %s\n", substitutionEncryption);
+    substitutionDecryption = substitution_decr(substitutionEncryption, cipherAlphabet);
+    printf("THe plaitext is %s\n", substitutionDecryption);
+
     return 0;
     
 }
@@ -92,10 +96,64 @@ const char*  one_time_pad_dencr_five(char *ciphertext, int plainSize, char** sec
     return plaintext;
 }
 
-const char* substitution_encr(char *plaintext, char *cipherAlphabet) {
 
+/**
+We are going to use the ASCII table by transforing the Chars to integers then we will find the order so for example a is 0 so we replace it the first letter of the cipherAlphabet
+*/
+const char* substitution_encr(char *plaintext, char *cipherAlphabet) {
+    char* ciphertext = malloc(sizeof(*plaintext) * sizeof(char));
+    int i; 
+    if ( strlen(cipherAlphabet) % 26 != 0 ) {
+        printf("Cipher Alphabet has wrong size please input again \n");
+        printf("%d\n",strlen(cipherAlphabet));
+        return NULL;
+    }
+    if ( strlen(cipherAlphabet) > 52 ) {
+        printf("Cipher Alphabet has wrong size please input again \n");
+        return NULL;
+    }
+    for(i=0; i < strlen(plaintext); i++) {
+        /**
+         * 'a' in ASCII table is 97 so we modulo the char with 97 to find the right place in the cipher alphabet 
+        */
+       if ( plaintext[i] != ' ') {
+           int placeInCIpherAlphabet = (int) (plaintext[i]) % 97 ;
+            ciphertext[i] = cipherAlphabet[placeInCIpherAlphabet];
+       }else { 
+             ciphertext[i] = ' ';
+       }
+     
+    }
+   
+    return ciphertext;
 }
 
 const char* substitution_decr(char *cipherText, char *cipherAlphabet) {
+    char* plaintext = malloc(sizeof(*cipherText) * sizeof(char));
+    int i; 
+    if ( strlen(cipherAlphabet) % 26 != 0 ) {
+        printf("Cipher Alphabet has wrong size please input again \n");
+        printf("%d\n",strlen(cipherAlphabet));
+        return NULL;
+    }
+    if ( strlen(cipherAlphabet) > 52 ) {
+        printf("Cipher Alphabet has wrong size please input again \n");
+        return NULL;
+    }
 
+    for(i=0; i < strlen(cipherText); i++) {
+        if (cipherText[i] != ' ' ) {
+            char* placeInCipherAlphabet = strchr(cipherAlphabet, cipherText[i]);
+            plaintext[i] = (char) (97 + ((int) (placeInCipherAlphabet - cipherAlphabet)));
+        }else { 
+            plaintext[i] = ' ';
+        }
+    }
+    
+    return plaintext;
+
+}
+const char* substitution_algo_decr(char *ciphertext) {
+    char* plaintext = malloc(sizeof(ciphertext) * sizeof(char));
+    
 }
