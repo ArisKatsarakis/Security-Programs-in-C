@@ -1,0 +1,43 @@
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <openssl/bio.h> /* BasicInput/Output streams */
+
+#include <openssl/err.h> /* errors */
+
+#include <openssl/ssl.h> /* core library */
+void printExampleMessageS() {
+    printf("Example for saving passwords. \n ");
+    printf("pm save -f <path to password file> <website> <username> <password>\n");
+    printf("Example for getting passwords. \n ");
+    printf("pm get -f <path to password file> <website>\n" );
+}
+
+int main(int argc, char *argv[]) {
+    char* masterPassword= "password";
+    char* buffer= malloc( 100 * sizeof(char));
+    if (argc == 1) {
+        printf("No arguments given\n");
+        printExampleMessageS();
+    }
+    if ( !strcmp(argv[1], "save") ) {
+        printf("Saving procedure \n");
+        printf("Give Password: ");
+        scanf("%[^\n]*c", buffer);
+        if ( !strcmp(masterPassword, buffer) ) {
+            /**
+             * Write in file
+            */
+           printf("Authentication Successful \n");
+
+
+        }else{
+            /**
+             * Authentication failed
+            */
+           printf("Authentication Failed \n Wrong password given \n");
+        }
+    }
+    return 1;
+}
